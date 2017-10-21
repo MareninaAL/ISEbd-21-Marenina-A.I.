@@ -637,8 +637,12 @@ public class Kitchen_my {
 		AddWater.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (watertap.GetOpen()) {
-					 pan.Init_Water(Integer.parseInt((count_water.getValue()).toString()));
-				
+					
+					
+					// pan.Init_Water(Integer.parseInt((count_water.getValue()).toString()));
+					 pan.Init_Water(water.length);
+					 
+					 
 					 for (int i = 0; i < water.length; ++i)
 			            {
 			                pan.AddWater(water[i]);
