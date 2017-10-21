@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
         int Price;
         int MaxCountVolume; 
 
-        private IInstrument inst;
+        private Instrument inst;
 
 
         public Form1()
