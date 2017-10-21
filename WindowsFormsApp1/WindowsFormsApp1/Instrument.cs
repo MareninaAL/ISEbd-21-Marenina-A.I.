@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-   public  interface Instrument 
+   public  interface IInstrument 
     {
 
         void SetPosition(int x, int y );
