@@ -28,7 +28,7 @@ public class Kitchen_my {
 	private Meat[] meat;
 	private Carrot[] carrot;
 	private Rice[] rice;
-	private Water[] water;//?????
+	private Water[] water;
 	private Salt salt;
 	private Oil oil;
 	
@@ -36,8 +36,6 @@ public class Kitchen_my {
 	private Stove stove;
 	private WaterTap watertap;
 	private Pan pan;
-	
-	//int countOnion;
 	/**
 	 * Launch the application.
 	 */
@@ -72,9 +70,6 @@ public class Kitchen_my {
 		watertap = new WaterTap() ; 
 		salt = new Salt();
 		oil = new Oil () ; 
-		
-	
-		
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 450);
@@ -251,7 +246,7 @@ public class Kitchen_my {
 		JButton Wash_rice = new JButton("мыть рис");
 		Wash_rice.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (watertap.GetOpen()==true) { // если кран открыт
+				if (watertap.GetOpen()==true) { 
 						if (rice==null ) {
 							JOptionPane.showMessageDialog(frame,"Риca нет ");
 							return; 
@@ -266,7 +261,7 @@ public class Kitchen_my {
 			                rice[i].SetDirty( false);
 			            }
 			            JOptionPane.showMessageDialog(frame,"Рис чистый");
-			          //  WaterTap_off.setSelected(true);
+			            WaterTap_off.setSelected(true);
 				}
 				else if  (watertap.GetOpen()==false) {
 					  JOptionPane.showMessageDialog(frame,"открой кран");
@@ -280,7 +275,7 @@ public class Kitchen_my {
 		JButton button_2 = new JButton("мыть мясо");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (watertap.GetOpen()==true) { // если кран открыт
+				if (watertap.GetOpen()==true) {
 						if (meat==null ) {
 							JOptionPane.showMessageDialog(frame,"Мясa нет ");
 							return; 
@@ -295,7 +290,7 @@ public class Kitchen_my {
 			            	meat[i].SetDirty( false);
 			            }
 			            JOptionPane.showMessageDialog(frame,"Мясо чистое");
-			           // WaterTap_off.setSelected(true);
+			            WaterTap_off.setSelected(true);
 				}
 				else if  (watertap.GetOpen()==false) {
 					  JOptionPane.showMessageDialog(frame,"открой кран");
@@ -308,7 +303,7 @@ public class Kitchen_my {
 		JButton button_3 = new JButton("мыть морковь");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (watertap.GetOpen()) { // если кран открыт
+				if (watertap.GetOpen()) { 
 						if (carrot==null ) {
 							JOptionPane.showMessageDialog(frame,"Морковь нет ");
 							return; 
@@ -323,7 +318,7 @@ public class Kitchen_my {
 			            	carrot[i].SetDirty( false);
 			            }
 			            JOptionPane.showMessageDialog(frame,"Морковь чистая");
-			            // WaterTap_off.setSelected(true);
+			             WaterTap_off.setSelected(true);
 				}
 				else if  (watertap.GetOpen()==false) {
 					  JOptionPane.showMessageDialog(frame,"открой кран");
@@ -336,8 +331,7 @@ public class Kitchen_my {
 		JButton button = new JButton("мыть лук");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (watertap.GetOpen()) { // если кран открыт
-					 //  pan.Init(Integer.parseInt((count_rice.getValue()).toString()));
+				if (watertap.GetOpen()) { 
 						if (onion==null ) {
 							JOptionPane.showMessageDialog(frame,"Лука нет ");
 							return; 
@@ -355,7 +349,7 @@ public class Kitchen_my {
 			            	
 			            }
 			            JOptionPane.showMessageDialog(frame,"Лук чистый");
-			            // WaterTap_off.setSelected(true);
+			             WaterTap_off.setSelected(true);
 				}
 				else if  (watertap.GetOpen()==false) {
 					  JOptionPane.showMessageDialog(frame,"открой кран");
@@ -382,7 +376,6 @@ public class Kitchen_my {
 	                return;
 	            } 
 			
-				/// проверка грязное ли мясо
 				for (int i = 0; i < meat.length; ++i) {
 					if (meat[i].GetDirty()) {
 						JOptionPane.showMessageDialog(frame,"Мясо грязное ");  return;
@@ -412,7 +405,6 @@ public class Kitchen_my {
 		JButton cut_onion = new JButton("Резать лук");
 		cut_onion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				/// проверка есть ли лук 
 				if (onion == null)
 	            {
 					JOptionPane.showMessageDialog(frame, "лука нет ");
@@ -427,7 +419,6 @@ public class Kitchen_my {
 	                return;
 	            }
 			
-				/// проверка грязный ли лук
 				for (int i = 0; i < onion.length; ++i) {
 					if (onion[i].GetDirty()) {
 						JOptionPane.showMessageDialog(frame,"Лук грязный ");  return;
@@ -456,8 +447,6 @@ public class Kitchen_my {
 		JButton cut_carrot = new JButton("Резать морковь");
 		cut_carrot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				/// проверка есть ли лук 
 				if (carrot == null)
 	            {
 					JOptionPane.showMessageDialog(frame, "морковь осутствует ");
@@ -471,8 +460,6 @@ public class Kitchen_my {
 	     
 	                return;
 	            }
-			
-				/// проверка грязная ли 
 				for (int i = 0; i < carrot.length; ++i) {
 					if (carrot[i].GetDirty()) {
 						JOptionPane.showMessageDialog(frame,"Морковь грязная ");  return;
@@ -500,7 +487,6 @@ public class Kitchen_my {
 		JButton AddOnion = new JButton("Добавить лук");
 		AddOnion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//если лук есть
 				if  (onion==null) {	
 					JOptionPane.showMessageDialog(frame, "лук осутствует ");
                 return;
@@ -509,23 +495,21 @@ public class Kitchen_my {
 					JOptionPane.showMessageDialog(frame, "лук осутствует ");
                 return;
                 }
-				//если лук помыт
 				for (int i = 0; i < onion.length; ++i) {
 					if (onion[i].GetDirty()) {
 						JOptionPane.showMessageDialog(frame,"лук грязный ");  return;
 					} 
 				
 				}
-				// если лук порезан 
 				for (int i = 0; i < onion.length; ++i) {
 					if (onion[i].getCut_ready()==false) {
 						JOptionPane.showMessageDialog(frame,"лук еще не порезали");  return;
 					} 
 				
 				}
-				 
-				// добавить лук на сковородку 
-				 pan.Init_Onion(Integer.parseInt((count_onion.getValue()).toString()));
+				
+			//	 pan.Init_Onion(Integer.parseInt((count_onion.getValue()).toString()));
+				 pan.Init_Onion(onion.length);
 				 
 			    for (int i = 0; i < onion.length; ++i)
 	            {
@@ -543,7 +527,6 @@ public class Kitchen_my {
 		AddMeat.setForeground(Color.RED);
 		AddMeat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//если мясо есть
 				if  (meat==null) {	
 					JOptionPane.showMessageDialog(frame, "мясо осутствует ");
                 return;
@@ -552,25 +535,22 @@ public class Kitchen_my {
 					JOptionPane.showMessageDialog(frame, "мясо осутствует ");
                 return;
                 }
-				//если мясо помыто
 				for (int i = 0; i < meat.length; ++i) {
 					if (meat[i].GetDirty()) {
 						JOptionPane.showMessageDialog(frame,"мясо грязное ");  return;
 					} 
 				
 				}
-				// если мясо порезано
 				for (int i = 0; i < meat.length; ++i) {
 					if (meat[i].getCut_ready()==false) {
 						JOptionPane.showMessageDialog(frame,"мясо еще не порезали");  return;
 					} 
 				
 				}
-				 
-				// добавить мясо на сковородку 
-				 pan.Init_Meat(Integer.parseInt((count_meat.getValue()).toString()));
-				 
-			    for (int i = 0; i < meat.length; ++i)
+				// pan.Init_Meat(Integer.parseInt((count_meat.getValue()).toString()));
+				 pan.Init_Meat(onion.length);
+			  
+				 for (int i = 0; i < meat.length; ++i)
 	            {
 	                pan.AddMeat(meat[i]);
 	                meat[i].SetAdd(true);
@@ -585,7 +565,6 @@ public class Kitchen_my {
 		JButton AddCarrot = new JButton("Добавить морковь");
 		AddCarrot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//если морковь есть
 				if  (carrot==null) {	
 					JOptionPane.showMessageDialog(frame, "морковь осутствует ");
                 return;
@@ -594,29 +573,25 @@ public class Kitchen_my {
 					JOptionPane.showMessageDialog(frame, "морковь осутствует ");
                 return;
                 }
-				//если морковь помыто
 				for (int i = 0; i < carrot.length; ++i) {
 					if (carrot[i].GetDirty()) {
 						JOptionPane.showMessageDialog(frame,"морковь грязная ");  return;
 					} 
 				
 				}
-				// если морковь порезано
 				for (int i = 0; i < carrot.length; ++i) {
 					if (carrot[i].getCut_ready()==false) {
 						JOptionPane.showMessageDialog(frame,"морковь еще не порезали");  return;
 					} 
 				
 				}
-				 
-				// добавить морковь на сковородку 
-				 pan.Init_Carrot(Integer.parseInt((count_carrot.getValue()).toString()));
+				// pan.Init_Carrot(Integer.parseInt((count_carrot.getValue()).toString()));
+				 pan.Init_Carrot(carrot.length);
 				 
 			    for (int i = 0; i < carrot.length; ++i)
 	            {
 	                pan.AddCarrot(carrot[i]);
 	                carrot[i].SetAdd(true);
-	             
 	            }
 			    JOptionPane.showMessageDialog(frame,"морковь добавлена");
 			}
@@ -628,7 +603,6 @@ public class Kitchen_my {
 		AddRice.setEnabled(false);
 		AddRice.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//если рис есть
 				if  (rice==null) {	
 					JOptionPane.showMessageDialog(frame, "рис осутствует ");
                 return;
@@ -637,23 +611,19 @@ public class Kitchen_my {
 					JOptionPane.showMessageDialog(frame, "рис осутствует ");
                 return;
                 }
-				//если рис помыт
 				for (int i = 0; i < rice.length; ++i) {
 					if (rice[i].GetDirty()) {
 						JOptionPane.showMessageDialog(frame,"рис грязный ");  return;
 					} 
-				
 				}
-			
-				// добавить рис на сковородку 
-				 pan.Init_Rice(Integer.parseInt((count_rice.getValue()).toString()));
+			//	 pan.Init_Rice(Integer.parseInt((count_rice.getValue()).toString()));
+				 pan.Init_Rice(rice.length);
+				 
 				 
 			    for (int i = 0; i < rice.length; ++i)
 	            {
 			    	 rice[i].SetAdd(true);
 	                pan.AddRice(rice[i]);
-	               
-	               
 	            }
 			    JOptionPane.showMessageDialog(frame,"рис добавлен");
 			}
@@ -673,7 +643,6 @@ public class Kitchen_my {
 			            {
 			                pan.AddWater(water[i]);
 			                water[i].SetAdd(true);
-			               
 			            }
 					 JOptionPane.showMessageDialog(frame,"воду добавили");
 				}
@@ -685,7 +654,6 @@ public class Kitchen_my {
 		AddWater.setBounds(284, 105, 145, 23);
 		frame.getContentPane().add(AddWater);
 		
-	
 		
 		JCheckBox StoveOn = new JCheckBox("Вкл");
 		StoveOn.addActionListener(new ActionListener() {
@@ -705,9 +673,9 @@ public class Kitchen_my {
 					JOptionPane.showMessageDialog(frame,"Вода или рис не добавлены на сковороду ");
 	   	      	return;
 	   	      	} else 	{
-	   	      		stove.Cooking2();
-	   	      		
-	   	      		JOptionPane.showMessageDialog(frame,"всё ок, потушили!"); 
+	   	      		//stove.Cooking2();
+	   	      	stove.Cooking();
+	   	      		JOptionPane.showMessageDialog(frame,"всё ок, потушили! готово!"); 
 	   	      	}
 			}
 		});
@@ -723,88 +691,38 @@ public class Kitchen_my {
 						return;
 					}
 					else { 
-				//		stove.SetState(true);
-					//	stove.SetPan(true);
 						stove.SetPan(pan);
 						JOptionPane.showMessageDialog(frame,"плита включена,сковородка на ней");
 					}
-					
-				
-
-					
-//					if (pan.Check()) { // 
-//						stove.SetPan(true); // сковородка  на плите
-//						JOptionPane.showMessageDialog(frame,"всё ок!"); 
-//						
-//		   	      	return; 
-//					} else if  (!pan.Check()) 	{
-//						JOptionPane.showMessageDialog(frame,"Не все ингридиенты добавлены на сковороду ");
-//						//cook1.setEnabled(true);
-//						
-//					}
-					
-					
-				
-				
 			}
 		});
 		button_1.setBounds(10, 80, 133, 23);
 		frame.getContentPane().add(button_1);
 		
-		
-		
 
 		JButton cook1 = new JButton("жарить");
 		cook1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			//	if  (stove.GetPan()) {
-					// запускается процесс приготовления 
-				//	stove.Cooking();
-			//		JOptionPane.showMessageDialog(frame,"жарим");
-//					AddRice.setEnabled(true);
-//					AddWater.setEnabled(true); 
-//					cook2.setEnabled(true); // активировать кнопку тушения
-			//	}
-			//	else 	JOptionPane.showMessageDialog(frame,"на плите пусто");
 				if  (stove.GetPan()==null) {
 					JOptionPane.showMessageDialog(frame,"на плите пусто");
 				return; 
-					
 				}
-//				if (!oil.GetCount()) {
-//					JOptionPane.showMessageDialog(frame,"нет масла");
-//				}
-//				if (!salt.GetCount()) {
-//					JOptionPane.showMessageDialog(frame,"нет cоли");
-//				}
-		
-				if (!pan.Check()) { // ????? ругается тут 
+				if (!pan.Check()) { 
 					JOptionPane.showMessageDialog(frame,"Не все ингридиенты добавлены на сковороду ");
 					
 	   	      	return; 
 				}
 				else {
-					//cook1.setEnabled(true);
-				//	stove.SetPan(true); // сковородка  на плите
 					AddRice.setEnabled(true);
 					AddWater.setEnabled(true); 
-					cook2.setEnabled(true); // активировать кнопку тушения
-					/// тут плита должна начать жарить 
+					cook2.setEnabled(true); 
 					stove.Cooking(); 
-					
 				JOptionPane.showMessageDialog(frame,"пожарил!"); 
 				}
-				
-				
 			}
 		});
 		cook1.setBounds(10, 105, 133, 23);
 		frame.getContentPane().add(cook1);
-		
-		
-	
-	
-	
 	}
 
 }

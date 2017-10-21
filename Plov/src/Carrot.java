@@ -7,7 +7,7 @@ public class Carrot {
 			return ready;
 		}
 
-	boolean  cut_ready = false ;  // изначально морковь не порезана
+	boolean  cut_ready = false ;  
 
 	   public void setCut_ready (boolean value){
 		   cut_ready=value;

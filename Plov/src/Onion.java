@@ -8,7 +8,7 @@ public class Onion {
 			return ready;
 		}
 
-   boolean  cut_ready = false ;  // изначально лук не порезан 
+   boolean  cut_ready = false ;
 
    public void setCut_ready (boolean value){
 	   cut_ready=value;

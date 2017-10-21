@@ -2,7 +2,6 @@
 public class Stove {
 	private Pan pan;
 	
-	///ключена ли плита
 	private boolean state;
     public boolean GetState(){
     	return state;
@@ -11,8 +10,7 @@ public class Stove {
     	state=s;
     }
 	
-	// имеет ли плита сковородку 
-	  public Pan GetPan(){ // Pan как тип 
+	  public Pan GetPan(){
 	    return pan;
 	    }
 	    public void SetPan(Pan p){
@@ -23,13 +21,13 @@ public class Stove {
 	
 	 public void Cooking()
 	    {
-	            	//pan.IsReady1=true;
+	            	
 		 pan.Cook();
 	        }
 	 
-	 public void Cooking2()
-	    {
-	            	//pan.IsReady1=true;
-		 pan.Cook2();
-	        }
+//	 public void Cooking2()
+//	    {
+//	            	
+//		 pan.Cook2();
+//	        }
 }

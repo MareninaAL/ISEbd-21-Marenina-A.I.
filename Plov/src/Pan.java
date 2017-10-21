@@ -92,18 +92,15 @@ public class Pan {
 	}
 
 	public boolean Check() {
-		if (onion == null)
-        {
-			 return false;
-        }
-		if (carrot == null)
-        {
-			 return false;
-        }
-		if (meat == null)
-        {
-			 return false;
-        }
+		if (onion == null) {
+			return false;
+		}
+		if (carrot == null) {
+			return false;
+		}
+		if (meat == null) {
+			return false;
+		}
 		for (int o = 0; o < onion.length; ++o) {
 			if (onion[o] == null)
 				return false;
@@ -117,28 +114,26 @@ public class Pan {
 			if (carrot[c] == null)
 				return false;
 		}
-		
-		if (salt==null ) {
-			return false; 
-			
+
+		if (salt == null) {
+			return false;
+
 		}
-		if (oil==null ) {
-			return false; 
-			
+		if (oil == null) {
+			return false;
+
 		}
 
 		return true;
 	}
 
 	public boolean Check2() {
-		if (rice == null)
-        {
-			 return false;
-        }
-		if (water == null)
-        {
-			 return false;
-        }
+		if (rice == null) {
+			return false;
+		}
+		if (water == null) {
+			return false;
+		}
 		for (int r = 0; r < rice.length; ++r) {
 			if (rice[r] == null)
 				return false;
@@ -151,30 +146,37 @@ public class Pan {
 		return true;
 	}
 
-	public void Cook() { // метод который готовит ингридиенты
-		// !! жарит
-		for (int i = 0; i < carrot.length; i++) {
-			carrot[i].Cook();
+	public void Cook() {
+		if (Check()) {
+			for (int i = 0; i < carrot.length; i++) {
+				carrot[i].Cook();
+			}
+			for (int i = 0; i < onion.length; i++) {
+				onion[i].Cook();
+			}
+			for (int i = 0; i < meat.length; i++) {
+				meat[i].Cook();
+			}
 		}
-		for (int i = 0; i < onion.length; i++) {
-			onion[i].Cook();
-		}
-		for (int i = 0; i < meat.length; i++) {
-			meat[i].Cook();
-		}
-
-	}
-
-	public void Cook2() { // метод который готовит ингридиенты
-		// !! тушит
-
-		for (int i = 0; i < water.length; i++) {
-			water[i].Cook();
-		}
-		for (int i = 0; i < rice.length; i++) {
-			rice[i].Cook();
+		if (Check2()) {
+			for (int i = 0; i < water.length; i++) {
+				water[i].Cook();
+			}
+			for (int i = 0; i < rice.length; i++) {
+				rice[i].Cook();
+			}
 		}
 
 	}
+
+	// public void Cook2() { // метод который тушит ингридиенты
+	// for (int i = 0; i < water.length; i++) {
+	// water[i].Cook();
+	// }
+	// for (int i = 0; i < rice.length; i++) {
+	// rice[i].Cook();
+	// }
+	//
+	// }
 
 }
