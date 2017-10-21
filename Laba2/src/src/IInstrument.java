@@ -1,5 +1,4 @@
 package src;
-
 import java.awt.Graphics;
 
 public interface IInstrument {
