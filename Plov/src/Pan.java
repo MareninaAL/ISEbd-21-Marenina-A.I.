@@ -169,14 +169,4 @@ public class Pan {
 
 	}
 
-	// public void Cook2() { // метод который тушит ингридиенты
-	// for (int i = 0; i < water.length; i++) {
-	// water[i].Cook();
-	// }
-	// for (int i = 0; i < rice.length; i++) {
-	// rice[i].Cook();
-	// }
-	//
-	// }
-
 }

@@ -508,7 +508,6 @@ public class Kitchen_my {
 				
 				}
 				
-			//	 pan.Init_Onion(Integer.parseInt((count_onion.getValue()).toString()));
 				 pan.Init_Onion(onion.length);
 				 
 			    for (int i = 0; i < onion.length; ++i)
@@ -547,7 +546,6 @@ public class Kitchen_my {
 					} 
 				
 				}
-				// pan.Init_Meat(Integer.parseInt((count_meat.getValue()).toString()));
 				 pan.Init_Meat(onion.length);
 			  
 				 for (int i = 0; i < meat.length; ++i)
@@ -585,7 +583,6 @@ public class Kitchen_my {
 					} 
 				
 				}
-				// pan.Init_Carrot(Integer.parseInt((count_carrot.getValue()).toString()));
 				 pan.Init_Carrot(carrot.length);
 				 
 			    for (int i = 0; i < carrot.length; ++i)
@@ -616,7 +613,6 @@ public class Kitchen_my {
 						JOptionPane.showMessageDialog(frame,"рис грязный ");  return;
 					} 
 				}
-			//	 pan.Init_Rice(Integer.parseInt((count_rice.getValue()).toString()));
 				 pan.Init_Rice(rice.length);
 				 
 				 
@@ -638,8 +634,7 @@ public class Kitchen_my {
 			public void actionPerformed(ActionEvent e) {
 				if (watertap.GetOpen()) {
 					
-					
-					// pan.Init_Water(Integer.parseInt((count_water.getValue()).toString()));
+				
 					 pan.Init_Water(water.length);
 					 
 					 
@@ -677,7 +672,6 @@ public class Kitchen_my {
 					JOptionPane.showMessageDialog(frame,"Вода или рис не добавлены на сковороду ");
 	   	      	return;
 	   	      	} else 	{
-	   	      		//stove.Cooking2();
 	   	      	stove.Cooking();
 	   	      		JOptionPane.showMessageDialog(frame,"всё ок, потушили! готово!"); 
 	   	      	}

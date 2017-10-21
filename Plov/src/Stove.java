@@ -25,9 +25,5 @@ public class Stove {
 		 pan.Cook();
 	        }
 	 
-//	 public void Cooking2()
-//	    {
-//	            	
-//		 pan.Cook2();
-//	        }
+
 }
