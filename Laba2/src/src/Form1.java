@@ -34,7 +34,7 @@ public class Form1 {
 	boolean button;
 	boolean mouthpiece;
 	
-	private Instrument inst;
+	private IInstrument inst;
 	
 
 	/**

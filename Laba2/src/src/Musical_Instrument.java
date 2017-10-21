@@ -3,7 +3,7 @@ package src;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public abstract class Musical_Instrument implements Instrument {
+public abstract class Musical_Instrument implements IInstrument {
 
 	protected int startPosY; 
     protected int startPosX;
