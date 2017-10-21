@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    public abstract class Musical_Instrument : Instrument
+    public abstract class Musical_Instrument : IInstrument
     {
 
         protected float startPosY; 
