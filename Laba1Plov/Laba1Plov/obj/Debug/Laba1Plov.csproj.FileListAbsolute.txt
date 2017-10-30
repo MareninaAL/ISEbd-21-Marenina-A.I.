@@ -1,0 +1,10 @@
+c:\Users\elion\source\repos\Laba1Plov\Laba1Plov\bin\Debug\Laba1Plov.exe.config
+c:\Users\elion\source\repos\Laba1Plov\Laba1Plov\bin\Debug\Laba1Plov.exe
+c:\Users\elion\source\repos\Laba1Plov\Laba1Plov\bin\Debug\Laba1Plov.pdb
+c:\Users\elion\source\repos\Laba1Plov\Laba1Plov\obj\Debug\Laba1Plov.csprojResolveAssemblyReference.cache
+c:\Users\elion\source\repos\Laba1Plov\Laba1Plov\obj\Debug\Laba1Plov.Form1.resources
+c:\Users\elion\source\repos\Laba1Plov\Laba1Plov\obj\Debug\Laba1Plov.Properties.Resources.resources
+c:\Users\elion\source\repos\Laba1Plov\Laba1Plov\obj\Debug\Laba1Plov.csproj.GenerateResource.Cache
+c:\Users\elion\source\repos\Laba1Plov\Laba1Plov\obj\Debug\Laba1Plov.csproj.CoreCompileInputs.cache
+c:\Users\elion\source\repos\Laba1Plov\Laba1Plov\obj\Debug\Laba1Plov.exe
+c:\Users\elion\source\repos\Laba1Plov\Laba1Plov\obj\Debug\Laba1Plov.pdb
