@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
             pictureBox1.Image = bmp;
         }
 
-        private void button1_Click(object sender, EventArgs e) // положить трубу
+        private void button1_Click(object sender, EventArgs e)
         {
             ColorDialog dialog = new ColorDialog();
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -44,7 +44,7 @@ namespace WindowsFormsApp1
 
         }
 
-        private void button2_Click(object sender, EventArgs e)  // положить саксофон 
+        private void button2_Click(object sender, EventArgs e)  
         {
            
                 ColorDialog dialogDop = new ColorDialog();
@@ -58,7 +58,7 @@ namespace WindowsFormsApp1
             
         }
 
-        private void button3_Click(object sender, EventArgs e) // купить
+        private void button3_Click(object sender, EventArgs e) 
         {
             if (maskedTextBox1.Text != "")
             {

@@ -13,32 +13,26 @@ namespace WindowsFormsApp1
     {
         private Color dopColor;
         private bool button ;
-        private bool bend; // изгиб 
-        private bool mouthpiece; // место куда дуть 
+        private bool bend;  
+        private bool mouthpiece; 
 
         public Saxophone(double Weight, Color color, Color dopColor, int Price, int MaxCountVolume,  bool bend, bool button, bool mouthpiece) : base(Weight, color, Price, MaxCountVolume)
         {
-            this.dopColor = dopColor; // дополнительный цвет !!!!
-            // еще доп параметры новые 
-            // что отличает трубу от саксофона 
-            // ! изгиб 
+            this.dopColor = dopColor; 
+          
             this.bend = bend;
-            // ! кнопки 
             this.button = button;
-            // место куда дуть \
             this.mouthpiece = mouthpiece; 
         }
 
 
         protected override void DrawTrumpet(Graphics g)
         {
-            // исходник 
             base.DrawTrumpet(g);
-
-            /// дополнительная дорисовка до саксофона 
+            
             if (bend)
             {
-                // отрисовать изгиб 
+               
                 Pen pen = new Pen(Color.Black);
                 g.DrawLine(pen, startPosX , startPosY+50, startPosX , startPosY + 80);
                 g.DrawArc(pen, startPosX, startPosY + 50, 45, 65,30,180);
@@ -52,7 +46,6 @@ namespace WindowsFormsApp1
 
             if (button)
             {
-                // отрисовать кнопочки 
 
                  Brush spoiler = new SolidBrush(dopColor); 
                 g.FillEllipse(spoiler, startPosX +2, startPosY + 15 , 7 , 7);
@@ -73,7 +66,6 @@ namespace WindowsFormsApp1
 
             if (mouthpiece)
             {
-                // отрисовать мундштук 
                 Pen pen = new Pen(Color.Black);
 
                 g.DrawLine(pen, startPosX+2 , startPosY -7 , startPosX -7, startPosY-23 );

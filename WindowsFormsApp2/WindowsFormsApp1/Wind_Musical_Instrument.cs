@@ -84,9 +84,8 @@ namespace WindowsFormsApp1
         }
 
 
-        public override void DrawDoing(Graphics g) //
+        public override void DrawDoing(Graphics g) 
         {
-            // отрисовка того что делает инструмент 
             Brush spoiler = new SolidBrush(Color.Black);
             g.FillEllipse(spoiler, startPosX + 60, startPosY, 11, 11);
             Pen pen = new Pen(Color.Black);
@@ -113,7 +112,6 @@ namespace WindowsFormsApp1
 
         protected virtual void DrawTrumpet(Graphics g)
         {
-            // отрисовка трубы 
            Pen pen = new Pen(Colorbody);
             g.DrawLine(pen, startPosX, startPosY, startPosX+2, startPosY-7);
             g.DrawLine(pen, startPosX+10, startPosY, startPosX + 8, startPosY - 7);
