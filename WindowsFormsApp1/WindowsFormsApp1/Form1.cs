@@ -12,78 +12,45 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        Magazine magazine;
 
-        Color color;
-        Color dopColor;
-        int Weight;
-        int Price;
-        int MaxCountVolume; 
 
-        private Instrument inst;
+       
 
 
         public Form1()
         {
             InitializeComponent();
-            color = Color.Gray;
-            dopColor = Color.Yellow;
-            Weight = 1500;
-             Price = 15000; 
-            MaxCountVolume = 70; 
-            DopColorButton.BackColor = dopColor;
-            buttonSelectColor.BackColor = color;
+            magazine = new Magazine();
+            Draw();
         }
 
-        private bool checkFields()
+        private void Draw()
         {
-
-            if (!int.TryParse(TextBoxWeight.Text, out Weight))
-            {
-                return false;
-            }
-            if (!int.TryParse(TextBoxPrice.Text, out Price))
-            {
-                return false;
-            }
-            if (!int.TryParse(textBoxMaxVolume.Text, out MaxCountVolume))
-            {
-                return false;
-            }
-            return true;
-        }
-
-        private void newColorButton_Click_1(object sender, EventArgs e)
-        {
-            ColorDialog cd = new ColorDialog();
-            if (cd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-               dopColor = cd.Color;
-                DopColorButton.BackColor = dopColor;
-            }
+            Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            Graphics gr = Graphics.FromImage(bmp);
+            magazine.Draw(gr, pictureBox1.Width, pictureBox1.Height);
+            pictureBox1.Image = bmp;
         }
 
 
-        private void button1_Click(object sender, EventArgs e) 
-        {
-            ColorDialog cd = new ColorDialog();
-            if (cd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                color = cd.Color;
-                buttonSelectColor.BackColor = color;
 
-            }
 
-        }
+
+  
+
+      
 
         private void SetTrumpet_Click_1(object sender, EventArgs e)
         {
-            if (checkFields())
+     
+            ColorDialog dialog = new ColorDialog();
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                inst = new Wind_Musical_Instrument(Weight, color, Price, MaxCountVolume);
-                Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-                Graphics gr = Graphics.FromImage(bmp);
-                inst.Draw_Wind_Instrument(gr);
-                pictureBox1.Image = bmp;
+                var wind_Musical_Instrument = new Wind_Musical_Instrument(1500, dialog.Color, 10000, 35);
+                int place = magazine.PutSaxophoneInMagazine(wind_Musical_Instrument);
+                Draw();
+                MessageBox.Show("Место полки : " + place);
             }
         }
 
@@ -93,39 +60,39 @@ namespace WindowsFormsApp1
 
         private void SetSaxophone_Click_1(object sender, EventArgs e)
         {
-            if (checkFields())
+   
+            ColorDialog dialogDop = new ColorDialog();
+            if (dialogDop.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                inst = new Saxophone(Weight, color, dopColor, Price, MaxCountVolume,  checkBox1.Checked, checkBox2.Checked, checkBox3.Checked);
-                Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-                Graphics gr = Graphics.FromImage(bmp);
-                inst.Draw_Wind_Instrument(gr);
-                pictureBox1.Image = bmp;
+                var wind_Musical_Instrument = new Saxophone(150, Color.Black, dialogDop.Color, 10000, 40, true, true, true);
+                int place = magazine.PutSaxophoneInMagazine(wind_Musical_Instrument);
+                Draw();
+                MessageBox.Show("Место полки: " + place);
             }
         }
 
 
 
-       
-
-        private void Sound_Click(object sender, EventArgs e) 
-        {
-            if (inst != null)
-            {
-                Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-                Graphics gr = Graphics.FromImage(bmp);
-                inst.DrawDoing(gr);
-                pictureBox1.Image = bmp;
-
-            }
-        }
+    
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            inst = new Saxophone(150, Color.Black, Color.Yellow, 10000, 40, true, true, true);
-            Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            Graphics gr = Graphics.FromImage(bmp);
-            inst.Draw_Wind_Instrument(gr);
-            pictureBox1.Image = bmp;
+          
+            if (maskedTextBox1.Text != "")
+            {
+                var wind_Musical_Instrument = magazine.GetSaxophoneInMagazine(Convert.ToInt32(maskedTextBox1.Text));
+
+                Bitmap bmp = new Bitmap(pictureBox2.Width, pictureBox2.Height);
+                Graphics gr = Graphics.FromImage(bmp);
+                wind_Musical_Instrument.SetPosition(5, 5);
+                wind_Musical_Instrument.Draw_Wind_Instrument(gr);
+                pictureBox2.Image = bmp;
+                Draw();
+            }
+            else
+            {
+                MessageBox.Show("Введите место");
+            }
         }
     }
 }
