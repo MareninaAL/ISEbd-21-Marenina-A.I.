@@ -8,56 +8,54 @@ namespace WindowsFormsApp1
 {
     class ClassArray<T> where T : IInstrument
     {
-        private T[] places; 
+        private Dictionary<int, T> places;
+        private int countMax;
         private T defaultValue;
 
         public ClassArray(int size, T defVal)
         {
             defaultValue = defVal;
-            places = new T[size];
-            for (int i = 0; i < places.Length; i++)
-            {
-                places[i] = defaultValue;
-            }
-        }
-
-        public T getObject(int ind)
-        {
-            if (ind > -1 && ind < places.Length)
-            {
-                return places[ind];
-            }
-
-            return defaultValue;
+            places = new Dictionary<int, T>();
+            countMax = size;
         }
 
         public static int operator +(ClassArray<T> p, T Saxophone)
         {
-            for (int i = 0; i < p.places.Length; i++)
+            if (p.places.Count == p.countMax)
+            {
+                return -1;
+            }
+            for (int i = 0; i < p.places.Count; i++)
             {
                 if (p.CheckFreePlace(i))
                 {
-                    p.places[i] = Saxophone;
+                    p.places.Add(i, Saxophone);
                     return i;
                 }
             }
-            return -1;
+            p.places.Add(p.places.Count, Saxophone);
+            return p.places.Count - 1;
         }
 
         public static T operator -(ClassArray<T> p, int index)
         {
-            if (!p.CheckFreePlace(index))
+            if (p.places.ContainsKey(index))
             {
                 T Saxophone = p.places[index];
-                p.places[index] = p.defaultValue;
+                p.places.Remove(index);
                 return Saxophone;
             }
             return p.defaultValue;
+
+           
+           
+         
         }
+
 
         private bool CheckFreePlace(int index)
         {
-            if (index < 0 || index > places.Length)
+            if (index < 0 || index > places.Count)
             {
                 return true;
             }
@@ -71,5 +69,16 @@ namespace WindowsFormsApp1
             }
             return false;
         }
-}
+        public T this[int ind]
+        {
+            get
+            {
+                if (places.ContainsKey(ind))
+                {
+                    return places[ind];
+                }
+                return defaultValue;
+            }
+        }
+    }
 }
