@@ -120,7 +120,7 @@ namespace WindowsFormsApp1
 
             g.DrawLine(pen, startPosX, startPosY+45, startPosX-7, startPosY + 51);
             g.DrawLine(pen, startPosX + 10, startPosY+45, startPosX + 18, startPosY + 51);
-            Brush spoiler = new SolidBrush(Color.Gray);
+            Brush spoiler = new SolidBrush(Colorbody);
             g.FillEllipse(spoiler, startPosX-7, startPosY+49, 25, 8);
         }
 
