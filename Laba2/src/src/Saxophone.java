@@ -27,6 +27,7 @@ public class Saxophone extends Wind_Musical_Instrument {
          
          if (bend)
          { 
+        	 g.setColor(dopColor);
              g.drawLine( startPosX , startPosY+50, startPosX , startPosY + 80);
              g.drawArc( startPosX, startPosY + 50, 45, 62,160,185);
              g.drawLine( startPosX+43, startPosY + 94, startPosX+43, startPosY + 75);
@@ -37,13 +38,14 @@ public class Saxophone extends Wind_Musical_Instrument {
          
          if (mouthpiece)
          {
-        	
+        	 g.setColor(dopColor);
              g.drawLine( startPosX+2 , startPosY -7 , startPosX -7, startPosY-23 );
              g.drawLine( startPosX+8, startPosY-7, startPosX - 7, startPosY - 30);
          }
 
          if (button)
          {
+        	 g.setColor(dopColor);
              g.fillOval( startPosX +2, startPosY + 15 , 7 , 7);
              g.fillOval( startPosX + 2, startPosY + 29, 7, 7);
              g.fillOval( startPosX + 2, startPosY + 41, 7, 7);
