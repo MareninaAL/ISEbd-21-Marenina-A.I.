@@ -119,13 +119,13 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            inst = new Saxophone(150, Color.Black, Color.Yellow, 10000, 40, true, true, true);
-            Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            Graphics gr = Graphics.FromImage(bmp);
-            inst.Draw_Wind_Instrument(gr);
-            pictureBox1.Image = bmp;
-        }
+//         private void button1_Click_1(object sender, EventArgs e)
+//         {
+//             inst = new Saxophone(150, Color.Black, Color.Yellow, 10000, 40, true, true, true);
+//             Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+//             Graphics gr = Graphics.FromImage(bmp);
+//             inst.Draw_Wind_Instrument(gr);
+//             pictureBox1.Image = bmp;
+//         }
     }
 }
