@@ -24,6 +24,11 @@ namespace WindowsFormsApp1
             this.mouthpiece = mouthpiece; 
         }
 
+        public void SetDopColor(Color color)
+        {
+            dopColor = color;
+        }
+
 
         protected override void DrawTrumpet(Graphics g)
         {

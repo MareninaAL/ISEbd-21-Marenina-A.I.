@@ -52,5 +52,11 @@ namespace WindowsFormsApp1
             return count; 
         }
 
+        public virtual void setMainColor(Color color)
+        {
+
+            Colorbody = color;
+        }
+
     }
 }

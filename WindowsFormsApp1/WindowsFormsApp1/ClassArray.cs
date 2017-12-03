@@ -55,19 +55,8 @@ namespace WindowsFormsApp1
 
         private bool CheckFreePlace(int index)
         {
-            if (index < 0 || index > places.Count)
-            {
-                return true;
-            }
-            if (places[index] == null)
-            {
-                return true;
-            }
-            if (places[index].Equals(defaultValue))
-            {
-                return true;
-            }
-            return false;
+           
+            return !places.ContainsKey(index);
         }
         public T this[int ind]
         {

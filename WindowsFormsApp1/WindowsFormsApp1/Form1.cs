@@ -13,6 +13,7 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         Magazine magazine;
+        FormSelectTr form;
 
         public Form1()
         {
@@ -54,18 +55,18 @@ namespace WindowsFormsApp1
 
         }
 
-        private void SetTrumpet_Click_1(object sender, EventArgs e)
-        {
+        //private void SetTrumpet_Click_1(object sender, EventArgs e)
+        //{
      
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                var wind_Musical_Instrument = new Wind_Musical_Instrument(1500, dialog.Color, 10000, 35);
-                int place = magazine.PutSaxophoneInMagazine(wind_Musical_Instrument);
-                Draw();
-                MessageBox.Show("Место полки : " + place);
-            }
-        }
+        //    ColorDialog dialog = new ColorDialog();
+        //    if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+        //    {
+        //        var wind_Musical_Instrument = new Wind_Musical_Instrument(1500, dialog.Color, 10000, 35);
+        //        int place = magazine.PutSaxophoneInMagazine(wind_Musical_Instrument);
+        //        Draw();
+        //        MessageBox.Show("Место полки : " + place);
+        //    }
+        //}
 
 
       
@@ -111,5 +112,29 @@ namespace WindowsFormsApp1
                
             }
         }
+
+        private void button_Order_Click(object sender, EventArgs e)
+        {
+            form = new FormSelectTr();
+            form.AddEvent(addInstrument);
+            form.Show();
+
+        }
+
+        private void addInstrument(IInstrument wind_Musical_Instrument)
+        {
+            if (wind_Musical_Instrument != null)
+            {
+                int place = magazine.PutSaxophoneInMagazine(wind_Musical_Instrument);
+                if (place > -1)
+                {
+                    Draw();
+                    MessageBox.Show("Ваше место " + place);
+                }
+                else MessageBox.Show("Самолет поставить не удалось");
+            }
+        }
+
+
     }
 }
