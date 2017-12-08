@@ -8,6 +8,7 @@ import java.awt.Graphics;
 import javax.swing.JColorChooser;
 import javax.swing.JFrame;
 import javax.swing.JButton;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -22,6 +23,10 @@ public class Form1 {
 	Magazine magazine;
 
 	private JTextField num_Place;
+	
+	JPanel panel;
+	 	private String[] elements = new String[6];
+	 	JList listLevels;
 
 	/**
 	 * Launch the application.
@@ -44,8 +49,13 @@ public class Form1 {
 	 */
 	public Form1() {
 
-		magazine = new Magazine();
+		magazine = new Magazine(4);
 		initialize();
+		
+		for (int i = 0; i < 4; i++) {
+			 			elements[i] = "уровень " + (i+1);
+					}
+					listLevels.setSelectedIndex(magazine.getCurrentLevel());
 	}
 
 	private boolean checkPlace(String str) {
@@ -120,7 +130,7 @@ public class Form1 {
 		frame.getContentPane().add(set_Saxophone);
 
 		JPanel panelTake = new JPanel();
-		panelTake.setBounds(901, 11, 153, 170);
+		panelTake.setBounds(567, 290, 148, 243);
 		frame.getContentPane().add(panelTake);
 
 		
@@ -143,7 +153,7 @@ public class Form1 {
 				}
 			}
 		});
-		button.setBounds(557, 457, 89, 23);
+		button.setBounds(557, 540, 89, 23);
 		frame.getContentPane().add(button);
 
 		JLabel label = new JLabel("Взять покупку с места");
@@ -154,6 +164,32 @@ public class Form1 {
 		num_Place.setBounds(560, 117, 86, 20);
 		frame.getContentPane().add(num_Place);
 		num_Place.setColumns(10);
+		
+		listLevels = new JList(elements);
+		listLevels.setBounds(560, 140, 153, 111);
+		frame.getContentPane().add(listLevels);
+		
+		JButton btnLevelDown = new JButton("<<");
+		 		btnLevelDown.addActionListener(new ActionListener() {
+		 			public void actionPerformed(ActionEvent arg0) {
+		 				magazine.levelDown();
+		 				listLevels.setSelectedIndex(magazine.getCurrentLevel());
+		 				panel.repaint();
+		 			}
+		 		});
+		 		btnLevelDown.setBounds(560, 255, 70, 20);
+		 		frame.getContentPane().add(btnLevelDown);
 
+		 		
+		 		JButton btnLevelUp = new JButton(">>");
+		 		 	btnLevelUp.addActionListener(new ActionListener() {
+		 		 			public void actionPerformed(ActionEvent e) {
+		 		 				magazine.levelUp();
+		 		 				listLevels.setSelectedIndex(magazine.getCurrentLevel());
+		 		 				panel.repaint();
+		 		 			}
+		 		 		});
+		 		 		btnLevelUp.setBounds(645, 255, 70, 20);
+		 		 		frame.getContentPane().add(btnLevelUp);
 	}
 }
