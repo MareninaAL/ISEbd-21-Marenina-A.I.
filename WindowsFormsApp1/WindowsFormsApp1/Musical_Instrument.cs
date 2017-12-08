@@ -57,6 +57,6 @@ namespace WindowsFormsApp1
 
             Colorbody = color;
         }
-
+        public abstract string GetInfo();
     }
 }

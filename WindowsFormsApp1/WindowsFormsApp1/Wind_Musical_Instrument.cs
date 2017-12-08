@@ -81,6 +81,28 @@ namespace WindowsFormsApp1
         }
 
 
+        public Wind_Musical_Instrument(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 4)
+            {
+                Weight = Convert.ToInt32(strs[0]);
+                Colorbody = Color.FromName(strs[1]);
+                Price = Convert.ToInt32(strs[2]);
+                MaxCountVolume = Convert.ToInt32(strs[3]);
+            }
+            Random rand = new Random();
+            startPosX = rand.Next(30, 310);
+            startPosY = rand.Next(30, 180);
+        }
+
+        public override string GetInfo()
+        {
+            return Weight + ";" + Colorbody.Name + ";"
+                + Price + ";" + MaxCountVolume;
+        }
+
+
         public override void DrawDoing(Graphics g) //
         {
             
