@@ -2,30 +2,50 @@ package src;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 public class Magazine {
-	ClassArray<IInstrument> magazine;
+	 ArrayList<ClassArray<IInstrument>> magazineStages;  
 
 	int countPlaces = 12;
 	int placeSizeWidth = 210;
 	int placeSizeHeight = 120;
+	
+	int currentLevel;
 
-	public Magazine() {
-		magazine = new ClassArray<IInstrument>(countPlaces, null);
+	public Magazine(int countStages ) {
+		 magazineStages = new ArrayList<ClassArray<IInstrument>>(countStages); 
+	        
+         for (int i=0; i<countStages;  i++)
+         {
+        	 magazineStages.add(new ClassArray<IInstrument>(countPlaces, null));
+         }
 	}
+	
+	public int getCurrentLevel(){
+		 			return currentLevel;	
+		 	}
+		 
+		 	public void levelUp(){
+		 		if (currentLevel + 1 < magazineStages.size()) currentLevel++;
+		 	}
+		 
+		 	public void levelDown(){
+		 		if (currentLevel > 0) currentLevel--;
+		  	}
 
 	public int PutSaxophoneInMagazine(IInstrument Saxophone) {
-		return magazine.plus(magazine, Saxophone);
+		return magazineStages.get(currentLevel).plus(magazineStages.get(currentLevel), Saxophone);
 	}
 
 	public IInstrument GetSaxophoneInMagazine(int ticet) {
-		return magazine.minus(magazine, ticet);
+		return magazineStages.get(currentLevel).minus(magazineStages.get(currentLevel), ticet);
 	}
 
 	public void draw(Graphics g, int width, int height) {
 		drawMarking(g);
 		for (int i = 0; i < countPlaces; i++) {
-			IInstrument Saxophone = magazine.getObject(i);
+			IInstrument Saxophone = magazineStages.get(currentLevel).getSaxophone(i);
 			if (Saxophone != null) {
 				Saxophone.SetPosition(4 + i / 4 * placeSizeWidth + 30, i % 4
 						* placeSizeHeight + 20);
