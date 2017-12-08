@@ -14,13 +14,13 @@ public class ClassArray <T extends IInstrument> {
 	 	}
 	 	}
 	 	
-	 	public static <T extends IInstrument> int plus(ClassArray<T> p, T plane)
+	 	public static <T extends IInstrument> int plus(ClassArray<T> p, T Saxophone)
 	 	{
 	 		for(int i = 0; i < p.places.length; i++)
 	 	{
 	 		if (p.checkFree(i))
 	 			{
-	 				p.places[i] = plane;
+	 				p.places[i] = Saxophone;
 	 				return i;
 	 			}
 	 		}
@@ -31,9 +31,9 @@ public class ClassArray <T extends IInstrument> {
 	 	{
 	 		if (!p.checkFree(index))
 	 	{
-	 			T plane = p.places[index];
+	 			T Saxophone = p.places[index];
 	 			p.places[index] = p.defaultValue;
-	 			return plane;
+	 			return Saxophone;
 	 		}
 	 	return p.defaultValue;
 	 	}
