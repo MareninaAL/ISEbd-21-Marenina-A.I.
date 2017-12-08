@@ -24,6 +24,28 @@ namespace WindowsFormsApp1
             this.mouthpiece = mouthpiece; 
         }
 
+        public Saxophone(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 8)
+            {
+                Weight = Convert.ToInt32(strs[0]);
+                Colorbody = Color.FromName(strs[1]);
+                Price = Convert.ToInt32(strs[2]);
+                MaxCountVolume = Convert.ToInt32(strs[3]);
+                dopColor = Color.FromName(strs[4]);
+                bend = Convert.ToBoolean(strs[5]);
+                button = Convert.ToBoolean(strs[6]);
+                mouthpiece = Convert.ToBoolean(strs[7]);
+            }
+        }
+
+        public override string GetInfo()
+        {
+            return Weight + ";" + Colorbody.Name + ";" + Price + ";" + MaxCountVolume + ";"
+                 + dopColor.Name + ";" + bend + ";" + button + ";" + mouthpiece;
+        }
+
         public void SetDopColor(Color color)
         {
             dopColor = color;

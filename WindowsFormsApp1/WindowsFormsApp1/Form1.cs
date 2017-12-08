@@ -55,21 +55,6 @@ namespace WindowsFormsApp1
 
         }
 
-        //private void SetTrumpet_Click_1(object sender, EventArgs e)
-        //{
-     
-        //    ColorDialog dialog = new ColorDialog();
-        //    if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-        //    {
-        //        var wind_Musical_Instrument = new Wind_Musical_Instrument(1500, dialog.Color, 10000, 35);
-        //        int place = magazine.PutSaxophoneInMagazine(wind_Musical_Instrument);
-        //        Draw();
-        //        MessageBox.Show("Место полки : " + place);
-        //    }
-        //}
-
-
-      
 
 
         private void SetSaxophone_Click_1(object sender, EventArgs e)
@@ -135,6 +120,35 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (magazine.LoadData(openFileDialog1.FileName))
+                {
+                    MessageBox.Show("Загрузили", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("не загрузилось :((((", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                Draw();
+            }
+        }
 
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (magazine.SaveData(saveFileDialog1.FileName))
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("не сохранилось :((((", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

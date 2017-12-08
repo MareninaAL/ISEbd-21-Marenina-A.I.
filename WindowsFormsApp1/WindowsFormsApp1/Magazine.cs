@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -94,6 +95,118 @@ namespace WindowsFormsApp1
                 }
                 g.DrawLine(pen, i * placeSizeWidth + 110, 0, i * placeSizeWidth + 110, 400);
             }
+        }
+
+        public bool SaveData(string filename)
+        {
+            if (File.Exists(filename))
+            {
+                File.Delete(filename);
+            }
+            using (FileStream fs = new FileStream(filename, FileMode.Create))
+            {
+                using (BufferedStream bs = new BufferedStream(fs))
+                {
+                    byte[] info = new UTF8Encoding(true).GetBytes
+                        ("CountLeveles:" + magazineStages.Count + Environment.NewLine);
+                    fs.Write(info, 0, info.Length);
+                    foreach (var level in magazineStages)
+                    {
+                        info = new UTF8Encoding(true).GetBytes
+                        ("Level:" + Environment.NewLine);
+                        fs.Write(info, 0, info.Length);
+                        for (int i = 0; i < countPlaces; i++)
+                        {
+                            var wind_Musical_Instrument = level[i];
+                            if (wind_Musical_Instrument != null)
+                            {
+                                if (wind_Musical_Instrument.GetType().Name == "Wind_Musical_Instrument")
+                                {
+                                    info = new UTF8Encoding(true).GetBytes("Trumpet:");
+                                    fs.Write(info, 0, info.Length);
+                                }
+                                if (wind_Musical_Instrument.GetType().Name == "Saxophone")
+                                {
+                                    info = new UTF8Encoding(true).GetBytes("Saxophone:");
+                                    fs.Write(info, 0, info.Length);
+                                }
+                                info = new UTF8Encoding(true).GetBytes(wind_Musical_Instrument.GetInfo() + Environment.NewLine);
+                                fs.Write(info, 0, info.Length);
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+
+        public bool LoadData(string filename)
+        {
+            if (!File.Exists(filename))
+            {
+                return false;
+            }
+            using (FileStream fs = new FileStream(filename, FileMode.Open))
+            {
+                string s = "";
+                using (BufferedStream bs = new BufferedStream(fs))
+                {
+                    byte[] b = new byte[fs.Length];
+                    UTF8Encoding temp = new UTF8Encoding(true);
+                    while (bs.Read(b, 0, b.Length) > 0)
+                    {
+                        s += temp.GetString(b);
+
+                    }
+                }
+                s = s.Replace("\r", "");
+                var strs = s.Split('\n');
+                if (strs[0].Contains("CountLeveles"))
+                {
+                    int count = Convert.ToInt32(strs[0].Split(':')[1]);
+                    if (magazineStages != null)
+                    {
+                        magazineStages.Clear();
+                    }
+                    magazineStages = new List<ClassArray<IInstrument>>(count);
+                }
+                else
+                {
+                    return false;
+                }
+                int counter = -1;
+                for (int i = 0; i < strs.Length; ++i)
+                {
+
+                    if (strs[i] == "Level:")
+                    {
+                        counter++;
+                        magazineStages.Add(new ClassArray<IInstrument>(countPlaces, null));
+                    }
+                    else if (strs[i].Split(':')[0] == "Trumpet")
+                    {
+                        IInstrument wind_Musical_Instrument = new Wind_Musical_Instrument(strs[i].Split(':')[1]);
+                        int number = magazineStages[counter] + wind_Musical_Instrument;
+                        if (number == -1)
+                        {
+                            return false;
+                        }
+
+                    }
+                    else if (strs[i].Split(':')[0] == "Saxophone")
+                    {
+                        IInstrument wind_Musical_Instrument = new Saxophone(strs[i].Split(':')[1]);
+                        int number = magazineStages[counter] + wind_Musical_Instrument;
+                        if (number == -1)
+                        {
+                            return false;
+                        }
+
+                    }
+                }
+            }
+
+            return true;
         }
     }
 }
