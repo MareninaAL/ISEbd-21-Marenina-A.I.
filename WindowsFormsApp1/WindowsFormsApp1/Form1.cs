@@ -55,18 +55,7 @@ namespace WindowsFormsApp1
 
         }
 
-        //private void SetTrumpet_Click_1(object sender, EventArgs e)
-        //{
-     
-        //    ColorDialog dialog = new ColorDialog();
-        //    if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-        //    {
-        //        var wind_Musical_Instrument = new Wind_Musical_Instrument(1500, dialog.Color, 10000, 35);
-        //        int place = magazine.PutSaxophoneInMagazine(wind_Musical_Instrument);
-        //        Draw();
-        //        MessageBox.Show("Место полки : " + place);
-        //    }
-        //}
+  
 
 
       
