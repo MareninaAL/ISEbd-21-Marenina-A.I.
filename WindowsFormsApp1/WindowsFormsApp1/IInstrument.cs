@@ -22,6 +22,6 @@ namespace WindowsFormsApp1
 
         int  GetVolume();
 
-
+        void setMainColor(Color color);
     }
 }
