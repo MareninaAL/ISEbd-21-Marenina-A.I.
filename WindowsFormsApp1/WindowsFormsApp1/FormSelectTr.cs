@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ namespace WindowsFormsApp1
 {
     public partial class FormSelectTr : Form
     {
-
+        private Logger log;
         public delegate void myDel(IInstrument Wind_Musical_Instrument);
         IInstrument wind_Musical_Instrument = null;
         public IInstrument getWind_Musical_Instrument { get { return wind_Musical_Instrument; } }
@@ -34,6 +35,7 @@ namespace WindowsFormsApp1
         public FormSelectTr()
         {
                InitializeComponent();
+            log = LogManager.GetCurrentClassLogger();
             Cancel.Click += (object sender, EventArgs e) => { Close(); };
         }
 
@@ -52,12 +54,13 @@ namespace WindowsFormsApp1
         private void lableSaxophone_MouseDown(object sender, MouseEventArgs e)
         {
             label_Saxophone.DoDragDrop(label_Saxophone.Text, DragDropEffects.Move | DragDropEffects.Copy);
-
+            log.Info("перетащили инструмент " + label_Saxophone.Text);
         }
 
         private void lableTrumpet_MouseDown(object sender, MouseEventArgs e)
         {
             label_Trumpet.DoDragDrop(label_Trumpet.Text, DragDropEffects.Move | DragDropEffects.Copy);
+            log.Info("перетащили инструмент " + label_Trumpet.Text);
         }
 
         private void panel1_DragEnter(object sender, DragEventArgs e)
@@ -75,10 +78,11 @@ namespace WindowsFormsApp1
             {
                 case "Trumpet":
                     wind_Musical_Instrument = new Wind_Musical_Instrument(1500, Color.Black, 10000, 35);
-
+                    log.Info("взяли инструмент - " + e.Data.GetData(DataFormats.Text));
                     break;
                 case "Saxophone":
                     wind_Musical_Instrument = new Saxophone(150, Color.Black, Color.Pink, 10000, 40, true, true, true);
+                    log.Info("взяли инструмент - " + e.Data.GetData(DataFormats.Text));
                     break;
             }
 
@@ -89,6 +93,7 @@ namespace WindowsFormsApp1
         {
             (sender as Control).DoDragDrop((sender as Control).BackColor,
                 DragDropEffects.Move | DragDropEffects.Copy);
+            log.Info("перетаскивание цвета");
         }
 
         private void labelBaseColor_DragEnter(object sender, DragEventArgs e)
@@ -106,6 +111,7 @@ namespace WindowsFormsApp1
             {
                 wind_Musical_Instrument.setMainColor((Color)e.Data.GetData(typeof(Color)));
                 Drawwind_Musical_Instrument();
+                log.Info("взяли основной цвет " + e.Data.GetData(typeof(Color)));
             }
         }
 
@@ -120,6 +126,7 @@ namespace WindowsFormsApp1
                 {
                     (wind_Musical_Instrument as Saxophone).SetDopColor((Color)e.Data.GetData(typeof(Color)));
                     Drawwind_Musical_Instrument();
+                    log.Info("взяли дополнительный цвет " + e.Data.GetData(typeof(Color)));
                 }
 
             }
@@ -131,6 +138,7 @@ namespace WindowsFormsApp1
             if (EventAddwind_Musical_Instrument != null)
             {
                 EventAddwind_Musical_Instrument(wind_Musical_Instrument);
+                log.Info("нажали на кнопку 'добавть' для добавления инструмента на полку ");
             }
             Close();
         }
