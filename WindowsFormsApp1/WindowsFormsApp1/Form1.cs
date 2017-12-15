@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +15,12 @@ namespace WindowsFormsApp1
     {
         Magazine magazine;
         FormSelectTr form;
+        private Logger log;
 
         public Form1()
         {
             InitializeComponent();
+            log = LogManager.GetCurrentClassLogger();
             magazine = new Magazine(4);
             for (int i = 1; i < 5; i++)
             {
@@ -43,6 +46,7 @@ namespace WindowsFormsApp1
         {
             magazine.LevelDown();
             listBoxLevels.SelectedIndex = magazine.GetcurrentLevel;
+            log.Info("переход на уровень ниже. Текущий уровень" + magazine.GetcurrentLevel);
             Draw();
 
         }
@@ -51,6 +55,7 @@ namespace WindowsFormsApp1
         {
             magazine.LevelUp();
             listBoxLevels.SelectedIndex = magazine.GetcurrentLevel;
+            log.Info("переход на уровень выше. Текущий уровень" + magazine.GetcurrentLevel);
             Draw();
 
         }
@@ -79,19 +84,21 @@ namespace WindowsFormsApp1
                 String level = listBoxLevels.Items[listBoxLevels.SelectedIndex].ToString();
                 if (maskedTextBox1.Text != "")
                 {
-                    IInstrument wind_Musical_Instrument = magazine.GetSaxophoneInMagazine(Convert.ToInt32(maskedTextBox1.Text));
-                    if (wind_Musical_Instrument != null)
+                    try
                     {
+                        IInstrument wind_Musical_Instrument = magazine.GetSaxophoneInMagazine(Convert.ToInt32(maskedTextBox1.Text));
                         Bitmap bmp = new Bitmap(pictureBox2.Width, pictureBox2.Height);
                         Graphics gr = Graphics.FromImage(bmp);
                         wind_Musical_Instrument.SetPosition(15, 25);
                         wind_Musical_Instrument.Draw_Wind_Instrument(gr);
                         pictureBox2.Image = bmp;
                         Draw();
+                        log.Info("куплен объект с места №" + Convert.ToInt32(maskedTextBox1.Text));
                     }
-                    else
+                    catch (MagazineIndexOutOfRangeException ex)
                     {
-                        MessageBox.Show("пустое место");
+                        MessageBox.Show(ex.Message, "Неверный номер ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        log.Info("произошла ошибка. неправильно введенный номер места");
                     }
                 }
                
@@ -102,6 +109,7 @@ namespace WindowsFormsApp1
         {
             form = new FormSelectTr();
             form.AddEvent(addInstrument);
+            log.Info("Открытие нового окна, для выполнения заказа");
             form.Show();
 
         }
@@ -110,13 +118,21 @@ namespace WindowsFormsApp1
         {
             if (wind_Musical_Instrument != null)
             {
-                int place = magazine.PutSaxophoneInMagazine(wind_Musical_Instrument);
-                if (place > -1)
+                try
                 {
+                    int place = magazine.PutSaxophoneInMagazine(wind_Musical_Instrument);
                     Draw();
                     MessageBox.Show("Ваше место " + place);
+                    log.Info("добавили элемент на место №" + place);
                 }
-                else MessageBox.Show("Самолет поставить не удалось");
+                catch (MagazineOverFlowException ex) {
+                    MessageBox.Show(ex.Message, "Ошибка переполнения ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    log.Info("произошла ошибка переполнения");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Общая ошибка ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -126,10 +142,12 @@ namespace WindowsFormsApp1
             {
                 if (magazine.LoadData(openFileDialog1.FileName))
                 {
+                    log.Info("загрузка из файла");
                     MessageBox.Show("Загрузили", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
+                    log.Info("загрузка из файла не свершилась");
                     MessageBox.Show("не загрузилось :((((", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 Draw();
@@ -142,10 +160,12 @@ namespace WindowsFormsApp1
             {
                 if (magazine.SaveData(saveFileDialog1.FileName))
                 {
+                    log.Info("coхранение в файл");
                     MessageBox.Show("Сохранение прошло успешно", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
+                    log.Info("попытка сохранения в файл не свершилась");
                     MessageBox.Show("не сохранилось :((((", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

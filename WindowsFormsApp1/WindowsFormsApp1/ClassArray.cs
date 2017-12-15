@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
         {
             if (p.places.Count == p.countMax)
             {
-                return -1;
+                throw new MagazineOverFlowException();
             }
             for (int i = 0; i < p.places.Count; i++)
             {
@@ -45,11 +45,11 @@ namespace WindowsFormsApp1
                 p.places.Remove(index);
                 return Saxophone;
             }
-            return p.defaultValue;
+            throw new MagazineIndexOutOfRangeException();
 
-           
-           
-         
+
+
+
         }
 
 
