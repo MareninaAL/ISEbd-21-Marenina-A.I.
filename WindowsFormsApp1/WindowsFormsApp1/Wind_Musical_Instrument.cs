@@ -7,9 +7,83 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-   public  class Wind_Musical_Instrument : Musical_Instrument
+   public  class Wind_Musical_Instrument : Musical_Instrument, IComparable<Wind_Musical_Instrument>, IEquatable<Wind_Musical_Instrument>
     {
-                    public override double  Weight
+        public int CompareTo(Wind_Musical_Instrument other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            if (Weight != other.Weight)
+            {
+                return Weight.CompareTo(other.Weight);
+            }
+            if (MaxCountVolume != other.MaxCountVolume)
+            {
+                return MaxCountVolume.CompareTo(other.MaxCountVolume);
+            }
+            if (Price != other.Price)
+            {
+                return Price.CompareTo(other.Price);
+            }
+            if (Colorbody != other.Colorbody)
+            {
+                return Colorbody.Name.CompareTo(other.Colorbody.Name);
+            }
+
+            return 0;
+        }
+
+        public bool Equals(Wind_Musical_Instrument other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (Price != other.Price)
+            {
+                return false;
+            }
+            if (Colorbody != other.Colorbody)
+            {
+                return false;
+            }
+            if (MaxCountVolume != other.MaxCountVolume)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            Wind_Musical_Instrument Wind_Musical_Instrument_obj = obj as Wind_Musical_Instrument;
+            if (Wind_Musical_Instrument_obj == null)
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(Wind_Musical_Instrument_obj);
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override double  Weight
                     {
                       get
                         {

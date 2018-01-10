@@ -9,8 +9,91 @@ namespace WindowsFormsApp1
 {
 
 
-    public class Saxophone : Wind_Musical_Instrument
+    public class Saxophone : Wind_Musical_Instrument, IComparable<Saxophone>, IEquatable<Wind_Musical_Instrument>
     {
+        public int CompareTo(Saxophone other)
+        {
+            var res = (this is Wind_Musical_Instrument).CompareTo(other is Wind_Musical_Instrument);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (dopColor != other.dopColor)
+            {
+                return dopColor.Name.CompareTo(other.dopColor.Name);
+            }
+            if (Colorbody != other.Colorbody)
+            {
+                return Colorbody.Name.CompareTo(other.Colorbody.Name);
+            }
+            if (button != other.button)
+            {
+                return button.CompareTo(other.button);
+            }
+            if (bend != other.bend)
+            {
+                return bend.CompareTo(other.bend);
+            }
+
+            if (mouthpiece != other.mouthpiece)
+            {
+                return mouthpiece.CompareTo(other.mouthpiece);
+            }
+            return 0;
+        }
+
+        public bool Equals(Saxophone other)
+        {
+            var res = (this is Wind_Musical_Instrument).Equals(other is Wind_Musical_Instrument);
+            if (!res)
+            {
+                return res;
+            }
+            if (dopColor != other.dopColor)
+            {
+                return false;
+            }
+            if (Colorbody != other.Colorbody)
+            {
+                return false;
+            }
+            if (button != other.button)
+            {
+                return false;
+            }
+            if (bend != other.bend)
+            {
+                return false;
+            }
+
+            if (mouthpiece != other.mouthpiece)
+            {
+                return false;
+            }
+            return true;
+        }
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            Saxophone Wind_Musical_Instrument_obj = obj as Saxophone;
+            if (Wind_Musical_Instrument_obj == null)
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(Wind_Musical_Instrument_obj);
+            }
+
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
         private Color dopColor;
         private bool button ;
         private bool bend; 
