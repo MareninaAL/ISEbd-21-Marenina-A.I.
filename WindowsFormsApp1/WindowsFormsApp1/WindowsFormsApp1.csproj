@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="IInstrument.cs" />
     <Compile Include="Magazine.cs" />
+    <Compile Include="MagazineAlreadyHaveException.cs" />
     <Compile Include="MagazineIndexOutOfRangeException.cs" />
     <Compile Include="MagazineOverFlowExcephion.cs" />
     <Compile Include="Program.cs" />

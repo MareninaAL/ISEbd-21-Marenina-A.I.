@@ -62,18 +62,22 @@ namespace WindowsFormsApp1
         public void Draw(Graphics g, int width, int height)
         {
             DrawMarking(g);
-            for (int i = 0; i < countPlaces; i++)
+            int i = 0;
+            foreach (var Saxophone in magazineStages[currentLevel])
             {
-                var Saxophone = magazineStages[currentLevel][i];
-                if (Saxophone != null)
-                {
-                    Saxophone.SetPosition(4 + i / 4 * placeSizeWidth + 30, i % 4 * placeSizeHeight + 20);
 
-                    Saxophone.Draw_Wind_Instrument(g);
-                }
+                Saxophone.SetPosition(4 + i / 4 * placeSizeWidth + 30, i % 4 * placeSizeHeight + 20);
+                Saxophone.Draw_Wind_Instrument(g);
+                i++;
+
             }
 
 
+        }
+
+        public void Sort()
+        {
+            magazineStages.Sort();
         }
 
         public void DrawMarking(Graphics g)
