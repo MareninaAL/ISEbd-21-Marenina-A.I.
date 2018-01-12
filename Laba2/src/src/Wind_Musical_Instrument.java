@@ -59,6 +59,9 @@ public class Wind_Musical_Instrument extends Musical_Instrument {
 	             startPosY = random.nextInt(180);
 
 	        }
+	        
+	       
+
 
 	@Override
 	public void DrawDoing(Graphics g) {

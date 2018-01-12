@@ -1,4 +1,5 @@
 package src;
+import java.awt.Color;
 import java.awt.Graphics;
 
 public interface IInstrument {
@@ -12,5 +13,7 @@ public interface IInstrument {
       void Volume (int x); 
 
       int  GetVolume(); 
+      
+      void setMainColor(Color color); 
 	
 }
