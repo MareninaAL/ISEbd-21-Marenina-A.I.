@@ -51,4 +51,10 @@ public abstract class Musical_Instrument implements IInstrument {
         countVolume = 0;
         return count; 
     }
+    
+    public  void setMainColor (Color c){
+
+        color = c; 
+        }
+    
 }

@@ -19,6 +19,11 @@ public class Saxophone extends Wind_Musical_Instrument {
         this.mouthpiece = mouthpiece; 
 	}
 	
+	 public void SetDopColor(Color color)
+     {
+         dopColor = color;
+     }
+	
 	@Override
 	 protected void DrawTrumpet(Graphics g)
      {
